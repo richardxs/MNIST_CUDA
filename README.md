@@ -1,7 +1,15 @@
 # MNIST Handwritten Digit Recognition in CUDA
 In this repo, a simple convolutional neural network (CNN) is built using CUDNN / CUBLAS and trained to recognize handwritten digits using the MNIST dataset. Training a classifier on the MNIST dataset can be regarded as the hello world of image recognition.
-![MNIST dataset example](MNIST_dataset_example.png)
-![Convolution neural network (CNN) example](MNIST_CNN.png)
+
+<div class="center">
+<img src="MNIST_dataset_example.png" width="500" height="200"/>
+<p> MNIST dataset example </p>
+</div>
+
+<div class="center">
+<img src="MNIST_CNN.png" width="500" height="200"/>
+<p> Convolution neural network (CNN) example </p>
+</div>
 
 
 # How to use
@@ -9,13 +17,13 @@ In this repo, a simple convolutional neural network (CNN) is built using CUDNN /
 ```bash
 $ git clone https://github.com/richardxs/MNIST_CUDA.git
 $ cd MNIST_CUDA
-$ bash download-mnist-dataset.sh
+$ bash download-mnist-dataset.sh (optional)
 $ make
 $ ./cnn
 ```
 
 # Expected output
-```bash
+```
 == MNIST training with CUDNN ==
 [TRAIN]
 loading ./dataset/train-images-idx3-ubyte
@@ -57,6 +65,7 @@ step: 1800, accuracy: 98.0977%
 step: 2000, accuracy: 98.1562%
 step: 2200, accuracy: 98.293%
 step: 2400, accuracy: 98.3828%
+
 [INFERENCE]
 loading ./dataset/t10k-images-idx3-ubyte
 loaded 10000 items..
@@ -70,16 +79,6 @@ accuracy: 97.95%
 Done.
 
 ```
-
-# Features
-* Parameter saving and loading
-* Network modification
-* Learning rate modificiation
-* Dataset shuffling
-* Testing
-* Add more layers
-
-All these features requires re-compilation
 
 # Reference
 > [MNIST handwritten Digit Recognition in Pytorch](https://nextjournal.com/gkoehler/pytorch-mnist)
