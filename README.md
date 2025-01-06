@@ -1,14 +1,17 @@
-# cuda-for-deep-learning
-Transparent CUDNN / CUBLAS usage for the deep learning training using MNIST dataset.
+# MNIST Handwritten Digit Recognition in CUDA
+In this repo, a simple convolutional neural network (CNN) is built using CUDNN / CUBLAS and trained to recognize handwritten digits using the MNIST dataset. Training a classifier on the MNIST dataset can be regarded as the hello world of image recognition.
+![MNIST dataset example](MNIST_dataset_example.png)
+![Convolution neural network (CNN) example](MNIST_CNN.png)
+
 
 # How to use
 
 ```bash
-$ git clone https://github.com/haanjack/cudnn-mnist-training
-$ cd cudnn-mnist-training
+$ git clone https://github.com/richardxs/MNIST_CUDA.git
+$ cd MNIST_CUDA
 $ bash download-mnist-dataset.sh
 $ make
-$ ./train
+$ ./cnn
 ```
 
 # Expected output
@@ -20,33 +23,52 @@ loaded 60000 items..
 .. model Configuration ..
 CUDA: conv1
 CUDA: pool
-CUDA: conv2
-CUDA: pool
-CUDA: dense1
 CUDA: relu
-CUDA: dense2
+CUDA: conv2
+CUDA: dropout
+CUDA: pool
+CUDA: relu
+CUDA: linear1
+CUDA: relu
+CUDA: linear2
+CUDA: relu
+CUDA: linear3
 CUDA: softmax
+conv1: Available Algorithm Count [FWD]: 10
+conv1: Available Algorithm Count [BWD-filter]: 9
+conv1: Available Algorithm Count [BWD-data]: 8
 .. initialized conv1 layer ..
+conv2: Available Algorithm Count [FWD]: 10
+conv2: Available Algorithm Count [BWD-filter]: 9
+conv2: Available Algorithm Count [BWD-data]: 8
 .. initialized conv2 layer ..
-.. initialized dense1 layer ..
-.. initialized dense2 layer ..
-step:  200, loss: 0.561, accuracy: 75.762%
-step:  400, loss: 2.754, accuracy: 96.574%
-step:  600, loss: 0.157, accuracy: 97.004%
-step:  800, loss: 0.005, accuracy: 97.006%
-step: 1000, loss: 0.178, accuracy: 97.016%
-step: 1200, loss: 0.014, accuracy: 96.998%
-step: 1400, loss: 0.854, accuracy: 96.998%
-step: 1600, loss: 0.165, accuracy: 96.984%
-step: 1800, loss: 0.051, accuracy: 97.006%
-step: 2000, loss: 0.284, accuracy: 97.025%
-step: 2200, loss: 0.002, accuracy: 96.996%
-step: 2400, loss: 0.013, accuracy: 96.990%
+.. initialized linear1 layer ..
+.. initialized linear2 layer ..
+.. initialized linear3 layer ..
+step:  200, accuracy: 75.3418%
+step:  400, accuracy: 92.7012%
+step:  600, accuracy: 95.0547%
+step:  800, accuracy: 96.2168%
+step: 1000, accuracy: 96.9238%
+step: 1200, accuracy: 97.2285%
+step: 1400, accuracy: 97.584%
+step: 1600, accuracy: 97.8867%
+step: 1800, accuracy: 98.0977%
+step: 2000, accuracy: 98.1562%
+step: 2200, accuracy: 98.293%
+step: 2400, accuracy: 98.3828%
 [INFERENCE]
 loading ./dataset/t10k-images-idx3-ubyte
 loaded 10000 items..
-loss: 3.165, accuracy: 85.500%
+conv1: Available Algorithm Count [FWD]: 10
+conv1: Available Algorithm Count [BWD-filter]: 9
+conv1: Available Algorithm Count [BWD-data]: 8
+conv2: Available Algorithm Count [FWD]: 10
+conv2: Available Algorithm Count [BWD-filter]: 9
+conv2: Available Algorithm Count [BWD-data]: 8
+accuracy: 97.95%
 Done.
+
 ```
 
 # Features
@@ -58,3 +80,8 @@ Done.
 * Add more layers
 
 All these features requires re-compilation
+
+# Reference
+> [MNIST handwritten Digit Recognition in Pytorch](https://nextjournal.com/gkoehler/pytorch-mnist)
+> [mnist cudnn](https://github.com/haanjack/mnist-cudnn)
+> [mnist data](https://yann.lecun.com/exdb/mnist/index.html)
